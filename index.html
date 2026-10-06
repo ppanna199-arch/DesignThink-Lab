@@ -18,7 +18,7 @@
   <div class="tag">Interactive Digital Learning</div>
   <div class="nav">
     <button onclick="location.href='index.html'">🏠 หน้าหลัก</button>
-    <button onclick="location.href='test.html'">📝 แบบทดสอบ</button>
+    <button onclick="location.href='activities.html'">🎮 ศูนย์กิจกรรม</button><button onclick="location.href='test.html'">📝 แบบทดสอบ</button>
   </div>
   <p class="muted" style="font-size:12px">ห้องปฏิบัติการการคิดเชิงออกแบบแบบดิจิทัล</p>
 </aside>
@@ -27,20 +27,20 @@
   <div style="font-size:13px;font-weight:800">DESIGN THINKING SIMULATION</div>
   <h1>DesignThink Lab</h1>
   <p>เรียนรู้ Design Thinking ผ่านสถานการณ์จำลอง กิจกรรมแบบโต้ตอบ และการตัดสินใจด้วยตนเอง</p>
-  <button onclick="location.href='test.html'">เริ่มทำภารกิจ →</button>
+  <button onclick="location.href='activities.html'">เริ่มทำกิจกรรม →</button>
 </section>
 
 <div style="height:18px"></div>
 <div class="grid">
   <div class="card"><div class="muted">XP ของฉัน</div><div class="xp" id="xp">0 XP</div><span class="level" id="level">Level 1 · Beginner</span></div>
   <div class="card"><div class="muted">ความก้าวหน้า</div><div class="metric" id="progressText">0%</div><div class="progress"><div class="bar" id="progressBar"></div></div></div>
-  <div class="card"><div class="muted">คะแนนสูงสุดแบบทดสอบ</div><div class="metric" id="bestScore">ยังไม่ทำ</div></div>
+  <div class="card"><div class="muted">กิจกรรมที่ทำสำเร็จ</div><div class="metric" id="activityCount">0 / 7</div></div><div class="card"><div class="muted">คะแนนสูงสุดแบบทดสอบ</div><div class="metric" id="bestScore">ยังไม่ทำ</div></div>
 </div>
 
 <div style="height:18px"></div>
 <div class="card">
   <h2>🎯 ภารกิจของวันนี้</h2>
-  <div class="mission"><div style="font-size:30px">📝</div><div><b>ทำแบบทดสอบ Design Thinking</b><div class="muted">ตอบคำถามให้ครบเพื่อรับ XP และปลดล็อกเหรียญรางวัล</div></div><button class="btn" style="margin-left:auto" onclick="location.href='test.html'">เริ่มภารกิจ</button></div>
+  <div class="mission"><div style="font-size:30px">🎮</div><div><b>ศูนย์กิจกรรม Design Thinking</b><div class="muted">มี 7 กิจกรรม: Empathize, Define, Ideate, Prototype, Test, Iterate และ Reflection</div></div><button class="btn" style="margin-left:auto" onclick="location.href='activities.html'">เริ่มกิจกรรม</button></div>
 </div>
 
 <div style="height:18px"></div>
@@ -82,7 +82,7 @@ function updateUI(){
   document.getElementById('level').textContent='Level '+level+' · '+name;
   document.getElementById('progressText').textContent=pct+'%';
   document.getElementById('progressBar').style.width=pct+'%';
-  document.getElementById('bestScore').textContent=best===null?'ยังไม่ทำ':best+'%';
+  document.getElementById('bestScore').textContent=best===null?'ยังไม่ทำ':best+'%'; document.getElementById('activityCount').textContent=['a1','a2','a3','a4','a5','a6','a7'].filter(id=>localStorage.getItem('dtl_done_'+id)==='1').length+' / 7';
   ['b1','b2','b3','b4'].forEach(id=>document.getElementById(id).classList.remove('unlocked'));
   if(localStorage.getItem('dtl_quizCompleted')==='1')document.getElementById('b1').classList.add('unlocked');
   if(localStorage.getItem('dtl_passed')==='1')document.getElementById('b2').classList.add('unlocked');
