@@ -94,28 +94,41 @@ const selected = Array(answers.length).fill(null);
 document.querySelectorAll('.choice').forEach(function(btn){
   btn.addEventListener('click', function(){
     const q = Number(btn.dataset.q);
-    document.querySelectorAll('.choice[data-q="'+q+'"]').forEach(function(x){
-      x.classList.remove('selected');
-    });
+    document.querySelectorAll('.choice[data-q="'+q+'"]').forEach(function(x){x.classList.remove('selected');});
     btn.classList.add('selected');
     selected[q] = Number(btn.dataset.a);
   });
 });
 
 document.getElementById('submitBtn').addEventListener('click', function(){
-  if(selected.includes(null)){
-    alert('กรุณาตอบให้ครบทุกข้อ');
-    return;
-  }
+  if(selected.includes(null)){alert('กรุณาตอบให้ครบทุกข้อ');return;}
   let score = 0;
-  selected.forEach(function(a,i){ if(a === answers[i]) score++; });
+  selected.forEach(function(a,i){if(a === answers[i]) score++;});
   const pct = Math.round(score / answers.length * 100);
+
+  // Gamification: XP is awarded once for the first completion.
+  const alreadyCompleted = localStorage.getItem('dtl_quizCompleted') === '1';
+  let xp = Number(localStorage.getItem('dtl_xp') || 0);
+  if(!alreadyCompleted){
+    xp += 80;
+    localStorage.setItem('dtl_quizCompleted','1');
+    if(pct >= 80) xp += 20;
+    if(pct === 100) xp += 20;
+    localStorage.setItem('dtl_xp', String(xp));
+  }
+
+  const oldBest = Number(localStorage.getItem('dtl_bestScore') || 0);
+  if(pct > oldBest) localStorage.setItem('dtl_bestScore', String(pct));
+  if(pct >= 80) localStorage.setItem('dtl_passed','1');
+
   const result = document.getElementById('result');
   result.classList.remove('hidden');
+  const gained = alreadyCompleted ? 0 : (80 + (pct >= 80 ? 20 : 0) + (pct === 100 ? 20 : 0));
   result.innerHTML =
     '<div class="result">ได้ '+score+' / '+answers.length+' คะแนน ('+pct+'%)</div>'+
     '<p>'+(pct >= 80 ? 'ผ่านเกณฑ์ ✓' : 'ยังไม่ถึงเกณฑ์ 80% ลองทบทวนแล้วทำใหม่ได้')+'</p>'+
-    '<button class="btn" onclick="location.href=\'index.html\'">กลับหน้า DesignThink Lab</button>';
+    (gained ? '<p style="font-weight:800;color:#5b5ce2">🎉 ได้รับ +'+gained+' XP</p>' : '<p style="color:#68738a">แบบทดสอบนี้รับ XP ไปแล้ว คะแนนสูงสุดจะถูกบันทึกไว้</p>')+
+    '<button class="btn" onclick="location.href=\'index.html\'">ดู XP และเหรียญรางวัล →</button>';
   result.scrollIntoView({behavior:'smooth'});
 });
 </script>
