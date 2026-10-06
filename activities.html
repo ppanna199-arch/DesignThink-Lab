@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DesignThink Lab | กิจกรรม</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--text:#172033;--muted:#68738a;--primary:#5b5ce2;--line:#e6e8f0;--good:#159957;--bad:#d64545}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:1000px;margin:auto;padding:28px 18px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px}.brand{font-weight:800;font-size:24px;color:var(--primary)}.xp{font-weight:800;background:#fff;padding:10px 14px;border-radius:99px;border:1px solid var(--line)}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;margin-top:18px;box-shadow:0 8px 30px rgba(31,38,64,.04)}
+.activity{border:1px solid var(--line);border-radius:18px;padding:20px;margin:14px 0}.activity h2{margin:0 0 6px}.tag{display:inline-block;background:#f0efff;color:var(--primary);border-radius:99px;padding:5px 9px;font-size:12px;font-weight:800}
+.choice{display:block;width:100%;text-align:left;padding:14px;margin:9px 0;border:1px solid #ddd;border-radius:12px;background:#fff;cursor:pointer}.choice:hover{border-color:var(--primary)}.choice.selected{background:#f0efff;border-color:var(--primary)}
+.btn{background:var(--primary);color:#fff;border:0;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}.btn.secondary{background:#fff;color:var(--primary);border:1px solid var(--line)}
+.feedback{display:none;margin-top:12px;padding:12px;border-radius:12px}.feedback.show{display:block}.good{background:#edf9f2;color:#116b3f}.bad{background:#fff0f0;color:#a22}
+textarea{width:100%;min-height:90px;padding:12px;border:1px solid #ddd;border-radius:12px;font:inherit;resize:vertical}
+.progress{height:10px;background:#eceef5;border-radius:99px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,#5b5ce2,#8b5cf6);width:0;transition:.4s}
+.done{background:#fffaf0;border-color:#f0d58b}
+.small{color:var(--muted)}.nav{margin-top:14px}.nav a{color:var(--primary);text-decoration:none;font-weight:700}
+@media(max-width:700px){.top{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><div><div class="brand">DesignThink Lab</div><div class="small">Interactive Mission Center</div></div><div class="xp" id="xp">⭐ 0 XP</div></div>
+<div class="nav"><a href="index.html">← กลับหน้าหลัก</a></div>
+
+<div class="card">
+<h1>🎮 Mission Center</h1>
+<p class="small">ทำกิจกรรมให้ครบทั้ง 7 ด่าน เพื่อฝึก Design Thinking แบบลงมือคิดจริง</p>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<p class="small" id="prog">0 / 7 กิจกรรม</p>
+</div>
+
+<div class="activity" id="a1">
+<span class="tag">MISSION 1 · +20 XP</span><h2>👥 Empathize — เข้าใจผู้ใช้</h2>
+<p><b>สถานการณ์:</b> นักเรียนบอกว่า “โรงอาหารมหาวิทยาลัยคนเยอะมากจนไม่อยากไปกิน”</p>
+<p>ข้อใดเป็นคำถามที่ช่วยให้เราเข้าใจผู้ใช้มากที่สุด?</p>
+<button class="choice" data-correct="1">A. ทำไมไม่ไปกินร้านอื่นล่ะ?</button>
+<button class="choice" data-correct="0">B. ตอนที่ไปโรงอาหาร คุณรู้สึกหรือเจอปัญหาอะไรบ้าง?</button>
+<button class="choice" data-correct="1">C. คุณคิดว่าโรงอาหารควรสร้างใหม่ไหม?</button>
+<div class="feedback"></div>
+</div>
+
+<div class="activity" id="a2">
+<span class="tag">MISSION 2 · +20 XP</span><h2>🎯 Define — นิยามปัญหา</h2>
+<p>จากข้อมูล “คนเยอะ + รอคิวนาน + ไม่รู้ว่าร้านไหนว่าง” ข้อใดเป็น Problem Statement ที่ชัดที่สุด?</p>
+<button class="choice" data-correct="1">A. โรงอาหารไม่ดี</button>
+<button class="choice" data-correct="0">B. นักศึกษาต้องการเลือกจุดซื้ออาหารที่รอไม่นานและรู้ข้อมูลคิวได้ง่าย</button>
+<button class="choice" data-correct="1">C. ต้องสร้างแอปโรงอาหาร</button>
+<div class="feedback"></div>
+</div>
+
+<div class="activity" id="a3">
+<span class="tag">MISSION 3 · +20 XP</span><h2>💡 Ideate — สร้างไอเดีย</h2>
+<p>เลือก <b>2 แนวคิด</b> ที่น่าสนใจสำหรับแก้ปัญหาการรอคิวโรงอาหาร</p>
+<button class="choice multi" data-correct="1">ระบบแสดงจำนวนคนรอของแต่ละร้านแบบเรียลไทม์</button>
+<button class="choice multi" data-correct="1">ระบบจองคิวล่วงหน้าผ่านมือถือ</button>
+<button class="choice multi" data-correct="0">เปลี่ยนสีผนังโรงอาหาร</button>
+<button class="choice multi" data-correct="0">เพิ่มโลโก้ให้ร้านอาหาร</button>
+<button class="btn checkMulti">ตรวจคำตอบ</button><div class="feedback"></div>
+</div>
+
+<div class="activity" id="a4">
+<span class="tag">MISSION 4 · +20 XP</span><h2>🧩 Prototype — จำลองวิธีแก้</h2>
+<p>ถ้าต้องทดสอบแนวคิด “ระบบจองคิวอาหาร” อย่างรวดเร็ว ควรเริ่มจากอะไร?</p>
+<button class="choice" data-correct="1">A. สร้างแอปเต็มระบบทันที</button>
+<button class="choice" data-correct="0">B. ทำหน้าจอจำลองให้ผู้ใช้ลองกดจองคิว</button>
+<button class="choice" data-correct="1">C. ซื้อเซิร์ฟเวอร์ก่อน</button>
+<div class="feedback"></div>
+</div>
+
+<div class="activity" id="a5">
+<span class="tag">MISSION 5 · +20 XP</span><h2>🧪 Test — ทดสอบกับผู้ใช้</h2>
+<p>ผู้ทดลองบอกว่า “ปุ่มจองคิวหาไม่เจอ” ควรทำอย่างไร?</p>
+<button class="choice" data-correct="1">A. บอกผู้ใช้ว่าให้หาใหม่</button>
+<button class="choice" data-correct="0">B. บันทึก Feedback และปรับตำแหน่งปุ่มให้ค้นหาได้ง่ายขึ้น</button>
+<button class="choice" data-correct="1">C. ยกเลิกการทดสอบ</button>
+<div class="feedback"></div>
+</div>
+
+<div class="activity" id="a6">
+<span class="tag">MISSION 6 · +20 XP</span><h2>🔄 Iterate — ปรับปรุง</h2>
+<p>หลังทดสอบพบว่าผู้ใช้สับสนหลายจุด แนวคิดใดสอดคล้องกับ Iterate?</p>
+<button class="choice" data-correct="0">A. ปรับต้นแบบจาก Feedback แล้วนำไปทดสอบอีกครั้ง</button>
+<button class="choice" data-correct="1">B. ใช้ต้นแบบเดิมเพราะทำเสร็จแล้ว</button>
+<button class="choice" data-correct="1">C. ลบโครงการทิ้งและไม่ทดลองอีก</button>
+<div class="feedback"></div>
+</div>
+
+<div class="activity" id="a7">
+<span class="tag">MISSION 7 · +20 XP</span><h2>🧠 Reflection — สะท้อนการเรียนรู้</h2>
+<p>เขียนสั้น ๆ ว่า <b>“สิ่งสำคัญที่สุดที่ได้เรียนรู้จาก Design Thinking คืออะไร?”</b></p>
+<textarea id="reflection" placeholder="เขียนคำตอบของคุณที่นี่..."></textarea>
+<br><br><button class="btn" id="reflectBtn">ส่ง Reflection +20 XP</button>
+<div class="feedback" id="reflectFeedback"></div>
+</div>
+
+<div class="card">
+<h2>🏆 สรุปภารกิจ</h2><p id="summary">ทำกิจกรรมให้ครบเพื่อปลดล็อกภารกิจทั้งหมด</p>
+<button class="btn secondary" onclick="location.href='test.html'">ไปทำแบบทดสอบ →</button>
+</div>
+</div>
+
+<script>
+const ids=['a1','a2','a3','a4','a5','a6','a7'];
+function xp(){return Number(localStorage.getItem('dtl_xp')||0)}
+function setXP(v){localStorage.setItem('dtl_xp',String(v));document.getElementById('xp').textContent='⭐ '+v+' XP'}
+function done(id){return localStorage.getItem('dtl_done_'+id)==='1'}
+function award(id){
+ if(done(id)) return false;
+ localStorage.setItem('dtl_done_'+id,'1');setXP(xp()+20);return true;
+}
+function update(){
+ let n=ids.filter(done).length;
+ document.getElementById('prog').textContent=n+' / 7 กิจกรรม';
+ document.getElementById('bar').style.width=(n/7*100)+'%';
+ ids.forEach(id=>{if(done(id))document.getElementById(id).classList.add('done')});
+ document.getElementById('summary').textContent=n===7?'🎉 ทำครบทั้ง 7 ภารกิจแล้ว! ได้รับ XP จากกิจกรรมครบถ้วน':'ทำสำเร็จแล้ว '+n+' ภารกิจ เหลืออีก '+(7-n)+' ภารกิจ';
+}
+document.querySelectorAll('.choice:not(.multi)').forEach(btn=>{
+ btn.addEventListener('click',function(){
+  const box=btn.parentElement;
+  box.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));
+  btn.classList.add('selected');
+  if(btn.dataset.correct==='0'){
+   const f=box.querySelector('.feedback');f.textContent='ถูกต้อง! คุณเลือกแนวทางที่สอดคล้องกับหลัก Design Thinking';f.className='feedback show good';
+   award(box.id);update();
+  }else{
+   const f=box.querySelector('.feedback');f.textContent='ยังไม่ใช่ ลองคิดจากมุมมองของผู้ใช้และหลักการของขั้นตอนนี้อีกครั้ง';f.className='feedback show bad';
+  }
+ });
+});
+document.querySelector('.checkMulti').addEventListener('click',function(){
+ const box=document.getElementById('a3'), chosen=[...box.querySelectorAll('.multi')].filter(x=>x.classList.contains('selected'));
+ const ok=chosen.length===2 && chosen.every(x=>x.dataset.correct==='1');
+ const f=box.querySelector('.feedback');
+ if(ok){f.textContent='เยี่ยม! เลือกแนวคิดที่ตอบปัญหาการรอคิวโดยตรง';f.className='feedback show good';award('a3');update()}
+ else{f.textContent='ลองใหม่: เลือกให้ครบ 2 แนวคิดที่แก้ปัญหาการรอคิวโดยตรง';f.className='feedback show bad'}
+});
+document.querySelectorAll('.multi').forEach(btn=>btn.addEventListener('click',()=>btn.classList.toggle('selected')));
+document.getElementById('reflectBtn').addEventListener('click',function(){
+ const t=document.getElementById('reflection').value.trim(), f=document.getElementById('reflectFeedback');
+ if(t.length<10){f.textContent='ลองเขียนอย่างน้อย 10 ตัวอักษร เพื่อสะท้อนสิ่งที่เรียนรู้';f.className='feedback show bad';return}
+ f.textContent=award('a7')?'Reflection สำเร็จ! ได้รับ +20 XP 🎉':'Reflection นี้ทำสำเร็จไปแล้ว';f.className='feedback show good';update();
+});
+setXP(xp());update();
+</script>
+</body>
+</html>
