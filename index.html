@@ -4,9 +4,97 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DesignThink Lab</title>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--text:#172033;--muted:#68738a;--primary:#5b5ce2;--line:#e6e8f0;--good:#159957}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--text)}button{font:inherit;cursor:pointer;border:0}.app{min-height:100vh;display:flex}.sidebar{width:270px;background:#fff;border-right:1px solid var(--line);padding:26px 18px;position:fixed;top:0;bottom:0}.brand{font-weight:800;font-size:22px}.brand span{color:var(--primary)}.tag{font-size:12px;color:var(--muted);margin:4px 0 28px}.nav button{display:block;width:100%;text-align:left;background:transparent;padding:13px 14px;border-radius:12px;color:#4e5870;margin:5px 0}.nav button:hover{background:#f0efff;color:var(--primary);font-weight:700}.main{margin-left:270px;width:calc(100% - 270px);padding:34px;max-width:1500px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 8px 30px rgba(31,38,64,.04)}.hero{background:linear-gradient(135deg,#5b5ce2,#8b5cf6);color:#fff;border:0;padding:36px}.hero button,.btn{background:#fff;color:var(--primary);padding:12px 18px;border-radius:12px;font-weight:800}.btn{background:var(--primary);color:#fff}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.metric{font-size:30px;font-weight:850}.muted{color:var(--muted)}.progress{height:10px;background:#eceef5;border-radius:99px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,#5b5ce2,#8b5cf6);width:0}.module{display:flex;gap:14px;align-items:center;padding:15px;border:1px solid var(--line);border-radius:15px;margin:10px 0}.module .num{width:40px;height:40px;border-radius:12px;background:#f0efff;color:var(--primary);display:grid;place-items:center;font-weight:800}.module button{margin-left:auto;background:#f0efff;color:var(--primary);padding:8px 12px;border-radius:10px;font-weight:700}.section{display:none}.section.active{display:block}.choice{border:1px solid var(--line);background:#fff;padding:15px 16px;border-radius:14px;text-align:left;width:100%;margin:8px 0}.choice:hover{border-color:#aaa8ff}.feedback{margin-top:14px;padding:14px;border-radius:14px;display:none}.feedback.show{display:block}.good{background:#edf9f2;color:#116b3f}@media(max-width:900px){.sidebar{position:static;width:100%;height:auto;border-right:0;border-bottom:1px solid var(--line)}.app{display:block}.main{margin:0;width:100%;padding:20px}.grid{grid-template-columns:1fr}}
+:root{--bg:#f6f7fb;--card:#fff;--text:#172033;--muted:#68738a;--primary:#5b5ce2;--line:#e6e8f0;--good:#159957;--gold:#d89b00}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--text)}button{font:inherit;cursor:pointer;border:0}
+.app{min-height:100vh;display:flex}.sidebar{width:270px;background:#fff;border-right:1px solid var(--line);padding:26px 18px;position:fixed;top:0;bottom:0}.brand{font-weight:800;font-size:22px}.brand span{color:var(--primary)}.tag{font-size:12px;color:var(--muted);margin:4px 0 28px}.nav button{display:block;width:100%;text-align:left;background:transparent;padding:13px 14px;border-radius:12px;color:#4e5870;margin:5px 0}.nav button:hover{background:#f0efff;color:var(--primary);font-weight:700}
+.main{margin-left:270px;width:calc(100% - 270px);padding:34px;max-width:1500px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 8px 30px rgba(31,38,64,.04)}.hero{background:linear-gradient(135deg,#5b5ce2,#8b5cf6);color:#fff;border:0;padding:36px}.hero button,.btn{background:#fff;color:var(--primary);padding:12px 18px;border-radius:12px;font-weight:800}.btn{background:var(--primary);color:#fff}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.metric{font-size:30px;font-weight:850}.muted{color:var(--muted)}.progress{height:10px;background:#eceef5;border-radius:99px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,#5b5ce2,#8b5cf6);width:0;transition:.4s}.module{display:flex;gap:14px;align-items:center;padding:15px;border:1px solid var(--line);border-radius:15px;margin:10px 0}.module .num{width:40px;height:40px;border-radius:12px;background:#f0efff;color:var(--primary);display:grid;place-items:center;font-weight:800}.module button{margin-left:auto;background:#f0efff;color:var(--primary);padding:8px 12px;border-radius:10px;font-weight:700}.xp{font-size:30px;font-weight:850;color:var(--primary)}.level{display:inline-block;padding:6px 10px;border-radius:99px;background:#f0efff;color:var(--primary);font-weight:800;font-size:13px}.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.badge{border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center}.badge .icon{font-size:30px;filter:grayscale(1);opacity:.35}.badge.unlocked{background:#fffaf0;border-color:#f0d58b}.badge.unlocked .icon{filter:none;opacity:1}.mission{display:flex;align-items:center;gap:14px;padding:15px;border:1px dashed #c9c9ff;border-radius:15px;background:#fafaff}.section{display:none}.section.active{display:block}
+@media(max-width:900px){.sidebar{position:static;width:100%;height:auto;border-right:0;border-bottom:1px solid var(--line)}.app{display:block}.main{margin:0;width:100%;padding:20px}.grid,.badges{grid-template-columns:1fr 1fr}}
 </style>
 </head>
-<body><div class="app"><aside class="sidebar"><div class="brand">DesignThink <span>Lab</span></div><div class="tag">Interactive Digital Learning</div><div class="nav"><button onclick="location.href='index.html'">🏠 หน้าหลัก</button><button onclick="location.href='test.html'">📝 แบบทดสอบ</button></div><p class="muted" style="font-size:12px">ห้องปฏิบัติการการคิดเชิงออกแบบแบบดิจิทัล</p></aside>
-<main class="main"><section class="card hero"><div style="font-size:13px;font-weight:800">DESIGN THINKING SIMULATION</div><h1>DesignThink Lab</h1><p>เรียนรู้ Design Thinking ผ่านสถานการณ์จำลอง กิจกรรมแบบโต้ตอบ และการตัดสินใจด้วยตนเอง</p><button onclick="location.href='test.html'">เริ่มทำแบบทดสอบ →</button></section><div style="height:18px"></div><div class="grid"><div class="card"><div class="muted">Empathize</div><div class="metric">เข้าใจผู้ใช้</div></div><div class="card"><div class="muted">Define → Ideate</div><div class="metric">นิยามและสร้างไอเดีย</div></div><div class="card"><div class="muted">Prototype → Test</div><div class="metric">ทดลองและปรับปรุง</div></div></div><div style="height:18px"></div><div class="card"><h2>เส้นทางการเรียนรู้</h2><div class="module"><div class="num">1</div><div><b>Empathize</b><div class="muted">เข้าใจผู้ใช้และปัญหาจากมุมมองของผู้ใช้</div></div></div><div class="module"><div class="num">2</div><div><b>Define</b><div class="muted">สังเคราะห์ข้อมูลและกำหนดปัญหาที่แท้จริง</div></div></div><div class="module"><div class="num">3</div><div><b>Ideate</b><div class="muted">สร้างทางเลือกและเลือกแนวคิดที่เหมาะสม</div></div></div><div class="module"><div class="num">4</div><div><b>Prototype → Test → Iterate</b><div class="muted">จำลอง ทดสอบ รับ Feedback และปรับปรุง</div></div></div></div></main></div></body></html>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">DesignThink <span>Lab</span></div>
+  <div class="tag">Interactive Digital Learning</div>
+  <div class="nav">
+    <button onclick="location.href='index.html'">🏠 หน้าหลัก</button>
+    <button onclick="location.href='test.html'">📝 แบบทดสอบ</button>
+  </div>
+  <p class="muted" style="font-size:12px">ห้องปฏิบัติการการคิดเชิงออกแบบแบบดิจิทัล</p>
+</aside>
+<main class="main">
+<section class="card hero">
+  <div style="font-size:13px;font-weight:800">DESIGN THINKING SIMULATION</div>
+  <h1>DesignThink Lab</h1>
+  <p>เรียนรู้ Design Thinking ผ่านสถานการณ์จำลอง กิจกรรมแบบโต้ตอบ และการตัดสินใจด้วยตนเอง</p>
+  <button onclick="location.href='test.html'">เริ่มทำภารกิจ →</button>
+</section>
+
+<div style="height:18px"></div>
+<div class="grid">
+  <div class="card"><div class="muted">XP ของฉัน</div><div class="xp" id="xp">0 XP</div><span class="level" id="level">Level 1 · Beginner</span></div>
+  <div class="card"><div class="muted">ความก้าวหน้า</div><div class="metric" id="progressText">0%</div><div class="progress"><div class="bar" id="progressBar"></div></div></div>
+  <div class="card"><div class="muted">คะแนนสูงสุดแบบทดสอบ</div><div class="metric" id="bestScore">ยังไม่ทำ</div></div>
+</div>
+
+<div style="height:18px"></div>
+<div class="card">
+  <h2>🎯 ภารกิจของวันนี้</h2>
+  <div class="mission"><div style="font-size:30px">📝</div><div><b>ทำแบบทดสอบ Design Thinking</b><div class="muted">ตอบคำถามให้ครบเพื่อรับ XP และปลดล็อกเหรียญรางวัล</div></div><button class="btn" style="margin-left:auto" onclick="location.href='test.html'">เริ่มภารกิจ</button></div>
+</div>
+
+<div style="height:18px"></div>
+<div class="card">
+  <h2>🏆 เหรียญรางวัล</h2>
+  <div class="badges">
+    <div class="badge" id="b1"><div class="icon">🚀</div><b>First Step</b><div class="muted">ทำแบบทดสอบครั้งแรก</div></div>
+    <div class="badge" id="b2"><div class="icon">🎯</div><b>Pass</b><div class="muted">ผ่านเกณฑ์ 80%</div></div>
+    <div class="badge" id="b3"><div class="icon">⭐</div><b>Perfect</b><div class="muted">ได้ 100%</div></div>
+    <div class="badge" id="b4"><div class="icon">💡</div><b>Thinker</b><div class="muted">สะสม 100 XP</div></div>
+  </div>
+</div>
+
+<div style="height:18px"></div>
+<div class="card">
+  <h2>เส้นทางการเรียนรู้</h2>
+  <div class="module"><div class="num">1</div><div><b>Empathize</b><div class="muted">เข้าใจผู้ใช้และปัญหาจากมุมมองของผู้ใช้</div></div></div>
+  <div class="module"><div class="num">2</div><div><b>Define</b><div class="muted">สังเคราะห์ข้อมูลและกำหนดปัญหาที่แท้จริง</div></div></div>
+  <div class="module"><div class="num">3</div><div><b>Ideate</b><div class="muted">สร้างทางเลือกและเลือกแนวคิดที่เหมาะสม</div></div></div>
+  <div class="module"><div class="num">4</div><div><b>Prototype → Test → Iterate</b><div class="muted">จำลอง ทดสอบ รับ Feedback และปรับปรุง</div></div></div>
+</div>
+
+<div style="height:18px"></div>
+<div style="text-align:right"><button onclick="resetGame()" style="background:transparent;color:#8b93a7;font-size:12px">รีเซ็ตความก้าวหน้า</button></div>
+</main>
+</div>
+
+<script>
+function getNum(k){return Number(localStorage.getItem(k)||0)}
+function updateUI(){
+  const xp=getNum('dtl_xp'), best=localStorage.getItem('dtl_bestScore');
+  let level=1,name='Beginner',next=50;
+  if(xp>=150){level=4;name='Innovator';next=200}
+  else if(xp>=100){level=3;name='Thinker';next=150}
+  else if(xp>=50){level=2;name='Explorer';next=100}
+  const prev=level===1?0:level===2?50:level===3?100:150;
+  const pct=Math.min(100,Math.round((xp-prev)/(next-prev)*100));
+  document.getElementById('xp').textContent=xp+' XP';
+  document.getElementById('level').textContent='Level '+level+' · '+name;
+  document.getElementById('progressText').textContent=pct+'%';
+  document.getElementById('progressBar').style.width=pct+'%';
+  document.getElementById('bestScore').textContent=best===null?'ยังไม่ทำ':best+'%';
+  ['b1','b2','b3','b4'].forEach(id=>document.getElementById(id).classList.remove('unlocked'));
+  if(localStorage.getItem('dtl_quizCompleted')==='1')document.getElementById('b1').classList.add('unlocked');
+  if(localStorage.getItem('dtl_passed')==='1')document.getElementById('b2').classList.add('unlocked');
+  if(Number(best)>=100)document.getElementById('b3').classList.add('unlocked');
+  if(xp>=100)document.getElementById('b4').classList.add('unlocked');
+}
+function resetGame(){
+  if(confirm('ต้องการรีเซ็ต XP เหรียญ และคะแนนสูงสุดใช่ไหม?')){
+    ['dtl_xp','dtl_bestScore','dtl_quizCompleted','dtl_passed'].forEach(k=>localStorage.removeItem(k));
+    updateUI();
+  }
+}
+updateUI();
+</script>
+</body></html>
